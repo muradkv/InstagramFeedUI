@@ -9,6 +9,12 @@ import UIKit
 import SnapKit
 
 final class FeedViewController: UIViewController {
+    //MARK: - Private Properties
+    private let tableView = UITableView()
+    private var items: [FeedItemType] = [
+        .stories(FeedStoriesItemCellInfo.makeSampleData())
+    ]
+    
     //MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +29,16 @@ private extension FeedViewController {
         navigationController?.navigationBar.tintColor = .black
         navigationItem.leftBarButtonItems = makeLeftbarButtonItems()
         navigationItem.rightBarButtonItems = makeRightbarButtonItems()
+        
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.register(FeedStoriesSetCell.self, forCellReuseIdentifier: String(describing: FeedStoriesSetCell.self))
+        tableView.register(FeedPostCell.self, forCellReuseIdentifier: String(describing: FeedPostCell.self))
+        view.addSubview(tableView)
+        tableView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        tableView.separatorStyle = .none
     }
     
     func makeLeftbarButtonItems() -> [UIBarButtonItem] {
@@ -79,5 +95,26 @@ private extension FeedViewController {
             print("Favorites")
         }
         return UIMenu(title: "", children: [subsItem, favsItem])
+    }
+}
+
+//MARK: - UITableViewDataSource, UITableViewDelegate
+extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        items.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let item = items[indexPath.row]
+        switch item {
+        case .stories(let info):
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: FeedStoriesSetCell.self)) as! FeedStoriesSetCell
+            cell.configure(with: info)
+            return cell 
+        case .post(let post):
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: FeedPostCell.self)) as! FeedPostCell
+            cell.configure(with: post)
+            return cell
+        }
     }
 }
