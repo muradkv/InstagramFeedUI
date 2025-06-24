@@ -20,13 +20,13 @@ typealias FeedStoriesCellInfo = [FeedStoriesItemCellInfo]
 extension FeedStoriesItemCellInfo {
     static func makeSampleData() -> FeedStoriesCellInfo {
         return [
-            FeedStoriesItemCellInfo(image: .lily, username: "user123", isAddButtonVisible: true, isNewStory: false),
-            FeedStoriesItemCellInfo(image: .lily, username: "user123", isAddButtonVisible: false, isNewStory: true),
-            FeedStoriesItemCellInfo(image: .lily, username: "user123", isAddButtonVisible: false, isNewStory: false),
-            FeedStoriesItemCellInfo(image: .lily, username: "user123", isAddButtonVisible: false, isNewStory: true),
-            FeedStoriesItemCellInfo(image: .lily, username: "user123", isAddButtonVisible: false, isNewStory: true),
-            FeedStoriesItemCellInfo(image: .lily, username: "user123", isAddButtonVisible: false, isNewStory: true),
-            FeedStoriesItemCellInfo(image: .lily, username: "user123", isAddButtonVisible: false, isNewStory: true)
+            FeedStoriesItemCellInfo(image: .lilyAva, username: "Lily", isAddButtonVisible: true, isNewStory: false),
+            FeedStoriesItemCellInfo(image: .storie1, username: "Aloha", isAddButtonVisible: false, isNewStory: true),
+            FeedStoriesItemCellInfo(image: .storie2, username: "Debil", isAddButtonVisible: false, isNewStory: false),
+            FeedStoriesItemCellInfo(image: .storie3, username: "Kuropa", isAddButtonVisible: false, isNewStory: true),
+            FeedStoriesItemCellInfo(image: .storie4, username: "Zhopa", isAddButtonVisible: false, isNewStory: true),
+            FeedStoriesItemCellInfo(image: .storie5, username: "YesYes", isAddButtonVisible: false, isNewStory: true),
+            FeedStoriesItemCellInfo(image: .storie6, username: "us$ser123", isAddButtonVisible: false, isNewStory: false)
         ]
     }
 }

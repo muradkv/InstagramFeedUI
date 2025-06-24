@@ -11,9 +11,7 @@ import SnapKit
 final class FeedViewController: UIViewController {
     //MARK: - Private Properties
     private let tableView = UITableView()
-    private var items: [FeedItemType] = [
-        .stories(FeedStoriesItemCellInfo.makeSampleData())
-    ]
+    private var items: [FeedItemType] = FeedItemType.makeSampleData()
     
     //MARK: - Life cycle
     override func viewDidLoad() {
